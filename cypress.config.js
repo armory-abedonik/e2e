@@ -12,6 +12,10 @@ module.exports = defineConfig({
           launchOptions.args.push('--disable-gpu');
         }
 
+        if (browser.family === 'electron') {
+          launchOptions.devTools = false;
+        }
+
         return launchOptions;
       });
     },

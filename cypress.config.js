@@ -7,7 +7,10 @@ module.exports = defineConfig({
       // implement node event listeners here
       
       on('before:browser:launch', (browser = {}, launchOptions) => {
-        launchOptions.args.push('--no-sandbox');
+        if (browser.family === 'chrome') {
+          launchOptions.args.push('--no-sandbox');
+          launchOptions.args.push('--disable-gpu');
+        }
 
         return launchOptions;
       });

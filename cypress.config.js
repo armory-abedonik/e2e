@@ -5,6 +5,12 @@ module.exports = defineConfig({
     supportFile: false,
     setupNodeEvents(on, config) {
       // implement node event listeners here
+      
+      on('before:browser:launch', (browser = {}, launchOptions) => {
+        launchOptions.args.push('--no-sandbox');
+
+        return launchOptions;
+      });
     },
   },
 });
